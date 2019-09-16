@@ -1,0 +1,4 @@
+./oldies
+*.png
+.ipynb_checkpoints
+.vscode
