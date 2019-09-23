@@ -9,3 +9,10 @@ services:
       - "8080:80"
     env_file:
     - .env
+  mapea:
+    build: mapea
+    image: jdayllon/mapea:5.0.1
+    deploy:
+      replicas: 1
+    ports:
+      - "9080:8080"

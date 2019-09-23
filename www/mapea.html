@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Mapea Sample Page</title>
+        <!-- fichero estilos -->
+        <link href="/css/mapea-5.0.1.ol.min.css" rel="stylesheet" />
+        <!-- ficheros javascript -->
+        <script type="text/javascript" src="/js/mapea-5.0.1.ol.min.js"></script>
+        <script type="text/javascript" src="/js/configuration-5.0.1.js"></script>
+    </head>
+    <body>
+        <h1>Mapea Sample Page</h1>
+        <p>This is a sample page for testing mapea into kubernetes config</p>
+        <div id="map"></div>
+        <script type="text/javascript">
+            mapajs = M.map({
+                container:"map"
+            });
+        </script>
+    </body>
+</html>

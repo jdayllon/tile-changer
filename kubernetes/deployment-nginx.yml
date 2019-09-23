@@ -1,24 +1,30 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tile-changer-deployment
+  name: tile-changer-nginx-deployment
   labels:
-    app: tile-changer
+    app: nginx-tile-changer
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: tile-changer
+      tier: frontend
   template:
     metadata:
       labels:
         app: tile-changer
+        tier: frontend
     spec:
       containers:
-      - name: tile-changer
-        image: jdayllon/tile-changer:1.0.0
+      - name: nginx
+        image: duluca/minimal-nginx-web-server
         ports:
-          - containerPort: 8080
-        env:
-          - name: TARGET_HOST
-            value: http://www.callejerodeandalucia.es/
+          - containerPort: 80
+        volumeMounts:
+        - mountPath: "/var/www/"
+          name: nginx-data
+      volumes: 
+      - name: nginx-data
+        hostPath:
+         path: /Users/jdayllon/dev/tile-changer/www
