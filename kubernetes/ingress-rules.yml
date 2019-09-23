@@ -14,3 +14,10 @@ spec:
         backend:
           serviceName: svc-nginx-tile-changer
           servicePort: 80
+  - host: tile-changer
+    http:
+      paths:
+      - path: /mapea5/
+        backend:
+          serviceName: svc-mapea-tile-changer
+          servicePort: 8080

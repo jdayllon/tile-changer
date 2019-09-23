@@ -8,12 +8,12 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: tile-changer
+      app: mapea-tile-changer
       tier: backend
   template:
     metadata:
       labels:
-        app: tile-changer
+        app: mapea-tile-changer
         tier: backend
     spec:
       containers:
