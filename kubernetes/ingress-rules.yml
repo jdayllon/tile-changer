@@ -21,3 +21,11 @@ spec:
         backend:
           serviceName: svc-mapea-tile-changer
           servicePort: 8080
+  - host: tile-changer
+    http:
+      paths:
+      - path: /servicios/
+        backend:
+          serviceName: svc-tile-changer
+          # Nodeport specified on deployment-tile-changer.yml
+          servicePort: 80
