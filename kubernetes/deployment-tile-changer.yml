@@ -4,21 +4,24 @@ metadata:
   name: tile-changer-deployment
   labels:
     app: tile-changer
+    tier: backend
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: tile-changer
+      tier: backend
   template:
     metadata:
       labels:
         app: tile-changer
+        tier: backend
     spec:
       containers:
       - name: tile-changer
         image: jdayllon/tile-changer:1.0.0
         ports:
-          - containerPort: 8080
+          - containerPort: 80
         env:
           - name: TARGET_HOST
             value: http://www.callejerodeandalucia.es/

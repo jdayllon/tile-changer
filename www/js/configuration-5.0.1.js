@@ -19,8 +19,8 @@
     * @public
     * @api stable
     */
-   M.config('MAPEA_URL', 'http://mapea4-sigc.juntadeandalucia.es/mapea');
-   //M.config('MAPEA_URL', 'http://tile-changer/mapea');
+   //M.config('MAPEA_URL', 'http://mapea4-sigc.juntadeandalucia.es/mapea');
+   M.config('MAPEA_URL', 'http://tile-changer/mapea5');
 
    /**
     * The path to the Mapea proxy to send
@@ -31,7 +31,8 @@
     * @api stable
     */
    // http://mapea4-sigc.juntadeandalucia.es/mapea/api/proxy?url=http%3A%2F%2Flocalhost%3A30180%2Fwmc%2Fmapa.xml&callback=mapea_jsonphandler_7888658108813209
-   M.config('PROXY_URL', location.protocol + '//mapea4-sigc.juntadeandalucia.es/mapea/api/proxy');
+   //M.config('PROXY_URL', location.protocol + '//mapea4-sigc.juntadeandalucia.es/mapea/api/proxy');
+   M.config('PROXY_URL', location.protocol + '//tile-changer/mapea5/api/proxy');
    //M.config('PROXY_URL', '/proxy');
 
    /**
@@ -42,7 +43,7 @@
     * @public
     * @api stable
     */
-   M.config('PROXY_POST_URL', location.protocol + '//mapea4-sigc.juntadeandalucia.es/mapea/proxyPost');
+   M.config('PROXY_POST_URL', location.protocol + '//tile-changer/mapea5/proxyPost');
 
    /**
     * The path to the Mapea templates
@@ -60,7 +61,8 @@
     * @public
     * @api stable
     */
-   M.config('THEME_URL', location.protocol + '//mapea4-sigc.juntadeandalucia.es/mapea/assets/');
+   //M.config('THEME_URL', location.protocol + '//mapea4-sigc.juntadeandalucia.es/mapea/assets/');
+   M.config('THEME_URL', location.protocol + '//tile-changer/mapea5/assets/');
 
    /**
     * The Geosearch URL
@@ -140,7 +142,8 @@
        * @public
        * @api stable
        */
-      'urls': 'http://mapea4-sigc.juntadeandalucia.es/mapea/files/wmc/mapa.xml,http://mapea4-sigc.juntadeandalucia.es/mapea/files/wmc/hibrido.xml,http://mapea4-sigc.juntadeandalucia.es/mapea/files/wmc/satelite.xml,http://mapea4-sigc.juntadeandalucia.es/mapea/files/wmc/context_cdau_callejero.xml,http://mapea4-sigc.juntadeandalucia.es/mapea/files/wmc/context_cdau_hibrido.xml,http://mapea4-sigc.juntadeandalucia.es/mapea/files/wmc/context_cdau_satelite.xml,http://mapea4-sigc.juntadeandalucia.es/mapea/files/wmc/contextCallejeroCache.xml,http://mapea4-sigc.juntadeandalucia.es/mapea/files/wmc/contextCallejero.xml,http://mapea4-sigc.juntadeandalucia.es/mapea/files/wmc/contextIDEA.xml,http://mapea4-sigc.juntadeandalucia.es/mapea/files/wmc/contextOrtofoto2009.xml,http://mapea4-sigc.juntadeandalucia.es/mapea/files/wmc/callejero2011cache.xml,http://mapea4-sigc.juntadeandalucia.es/mapea/files/wmc/ortofoto2011cache.xml,http://mapea4-sigc.juntadeandalucia.es/mapea/files/wmc/hibrido2011cache.xml,http://mapea4-sigc.juntadeandalucia.es/mapea/files/wmc/contextOrtofoto.xml'.split(','),
+      //'urls': 'http://mapea4-sigc.juntadeandalucia.es/mapea/files/wmc/mapa.xml,http://mapea4-sigc.juntadeandalucia.es/mapea/files/wmc/hibrido.xml,http://mapea4-sigc.juntadeandalucia.es/mapea/files/wmc/satelite.xml,http://mapea4-sigc.juntadeandalucia.es/mapea/files/wmc/context_cdau_callejero.xml,http://mapea4-sigc.juntadeandalucia.es/mapea/files/wmc/context_cdau_hibrido.xml,http://mapea4-sigc.juntadeandalucia.es/mapea/files/wmc/context_cdau_satelite.xml,http://mapea4-sigc.juntadeandalucia.es/mapea/files/wmc/contextCallejeroCache.xml,http://mapea4-sigc.juntadeandalucia.es/mapea/files/wmc/contextCallejero.xml,http://mapea4-sigc.juntadeandalucia.es/mapea/files/wmc/contextIDEA.xml,http://mapea4-sigc.juntadeandalucia.es/mapea/files/wmc/contextOrtofoto2009.xml,http://mapea4-sigc.juntadeandalucia.es/mapea/files/wmc/callejero2011cache.xml,http://mapea4-sigc.juntadeandalucia.es/mapea/files/wmc/ortofoto2011cache.xml,http://mapea4-sigc.juntadeandalucia.es/mapea/files/wmc/hibrido2011cache.xml,http://mapea4-sigc.juntadeandalucia.es/mapea/files/wmc/contextOrtofoto.xml'.split(','),
+      'urls': 'http://svc-nginx-tile-changer/wmc/mapa_tile_changer.xml,http://mapea4-sigc.juntadeandalucia.es/mapea/files/wmc/hibrido.xml,http://mapea4-sigc.juntadeandalucia.es/mapea/files/wmc/satelite.xml,http://mapea4-sigc.juntadeandalucia.es/mapea/files/wmc/context_cdau_callejero.xml,http://mapea4-sigc.juntadeandalucia.es/mapea/files/wmc/context_cdau_hibrido.xml,http://mapea4-sigc.juntadeandalucia.es/mapea/files/wmc/context_cdau_satelite.xml,http://mapea4-sigc.juntadeandalucia.es/mapea/files/wmc/contextCallejeroCache.xml,http://mapea4-sigc.juntadeandalucia.es/mapea/files/wmc/contextCallejero.xml,http://mapea4-sigc.juntadeandalucia.es/mapea/files/wmc/contextIDEA.xml,http://mapea4-sigc.juntadeandalucia.es/mapea/files/wmc/contextOrtofoto2009.xml,http://mapea4-sigc.juntadeandalucia.es/mapea/files/wmc/callejero2011cache.xml,http://mapea4-sigc.juntadeandalucia.es/mapea/files/wmc/ortofoto2011cache.xml,http://mapea4-sigc.juntadeandalucia.es/mapea/files/wmc/hibrido2011cache.xml,http://mapea4-sigc.juntadeandalucia.es/mapea/files/wmc/contextOrtofoto.xml'.split(','),
       //'urls' :'http://tile-changer/wmc/mapa.xml'.split(','),
 
       /**

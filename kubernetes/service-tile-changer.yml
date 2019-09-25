@@ -4,10 +4,12 @@ metadata:
   name: svc-tile-changer
   labels:
     app: tile-changer
+    tier: backend
 spec:
   type: NodePort
   selector:
     app: tile-changer
+    tier: backend
   ports:
     - protocol: TCP
       name: tile-changer

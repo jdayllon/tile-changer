@@ -4,6 +4,7 @@ metadata:
   name: tile-changer-mapea-deployment
   labels:
     app: mapea-tile-changer
+    tier: backend
 spec:
   replicas: 1
   selector:
@@ -21,10 +22,3 @@ spec:
         image: jdayllon/mapea:5.0.1
         ports:
           - containerPort: 8080
-#        volumeMounts:
-#        - mountPath: "/var/www/"
-#          name: nginx-data
-#      volumes: 
-#      - name: nginx-data
-#        hostPath:
-#         path: /Users/jdayllon/dev/tile-changer/www
