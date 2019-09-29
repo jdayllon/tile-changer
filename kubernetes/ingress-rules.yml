@@ -26,6 +26,6 @@ spec:
       paths:
       - path: /servicios/
         backend:
-          serviceName: svc-tile-changer
+          serviceName: svc-tile-changer-ieca
           # Nodeport specified on deployment-tile-changer.yml
           servicePort: 80

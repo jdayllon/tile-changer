@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tile-changer-ieca-deployment
+  labels:
+    app: tile-changer-ieca
+    tier: backend
+    target: ieca
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tile-changer-ieca
+      tier: backend
+      target: ieca
+  template:
+    metadata:
+      labels:
+        app: tile-changer-ieca
+        tier: backend
+        target: ieca
+    spec:
+      containers:
+      - name: tile-changer
+        image: jdayllon/tile-changer:1.0.0
+        ports:
+          - containerPort: 80
+        #env:
+        #  - name: TARGET_HOST
+        #    value: http://www.callejerodeandalucia.es/
+        env:
+         - name: TARGET_HOST
+           valueFrom:
+            configMapKeyRef:
+              name: cfm-tile-changer
+              key: TARGET_HOST_IECA
