@@ -1,4 +1,5 @@
 from flask import Flask, request, send_file
+from flask_caching import Cache
 import requests
 from loguru import logger
 import os
@@ -6,10 +7,38 @@ import PIL.Image
 from io import BytesIO
 import uuid 
 
-app = Flask(__name__)
-TARGET_HOST = os.environ['TARGET_HOST']
+#### 
+def env_var_load(name, default_value):
+    if name in os.environ:
+          res = type(default_value) (os.environ[name])
+          logger.info(f"ENV '{name}' Found: {res}")
+          return res
+    else:
+          logger.warning(f"ENV '{name}' NOT Found: {default_value}")
+          return default_value
 
-logger.info(f"Current Target Tile Host: {TARGET_HOST}")
+# Initial env prepare
+DEBUG = env_var_load("DEBUG",True)
+CACHE_TYPE = env_var_load("CACHE_TYPE",'simple')
+CACHE_DEFAULT_TIMEOUT = env_var_load("CACHE_DEFAULT_TIMEOUT",300)
+TARGET_HOST = env_var_load('TARGET_HOST','')
+
+config = {
+    "DEBUG": DEBUG,          # some Flask specific configs
+    "CACHE_TYPE": CACHE_TYPE, # Flask-Caching related configs
+    "CACHE_DEFAULT_TIMEOUT": CACHE_DEFAULT_TIMEOUT
+}
+
+if CACHE_TYPE == 'redis':  
+  config['CACHE_REDIS_HOST'] = env_var_load("CACHE_REDIS_HOST", 'localhost')
+  config['CACHE_REDIS_PORT'] = env_var_load("CACHE_REDIS_PORT", 6379)
+  config['CACHE_REDIS_PASSWORD'] = env_var_load("CACHE_REDIS_PASSWORD",'')
+  config['CACHE_REDIS_DB'] = env_var_load("CACHE_REDIS_DB",'')
+  
+app = Flask(__name__)
+app.config.from_mapping(config)
+cache = Cache(app)
+#### 
 
 # Based on https://stackoverflow.com/a/10170635
 def serve_pil_image(pil_img, mimetype):
@@ -20,6 +49,7 @@ def serve_pil_image(pil_img, mimetype):
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
+@cache.cached(timeout=24*60*60)
 def proxy(path):
   current_process = uuid.uuid1()
 
@@ -45,6 +75,7 @@ def proxy(path):
   image_bw = image.convert('LA')
   logger.info(f"|{current_process}| Image transformed, ready to response")
   return serve_pil_image(image_bw, original_mimetype)
+
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0', port=8080)

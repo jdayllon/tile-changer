@@ -2,6 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: ingress-tile-changer-apps
+  namespace: tile-changer
   annotations:
   # This is done for changing app's base path url to need path on wms services
    nginx.ingress.kubernetes.io/rewrite-target: /servicios/$1

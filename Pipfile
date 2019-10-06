@@ -11,6 +11,8 @@ requests = "*"
 loguru = "*"
 pil = "*"
 pillow = "*"
+flask-caching = "*"
+redis = "*"
 
 [requires]
 python_version = "3.7"

@@ -2,7 +2,7 @@ version: "3.7"
 services:
   tile-changer:
     build: .
-    image: jdayllon/tile-changer:1.0.0
+    image: jdayllon/tile-changer:lastest
     deploy:
       replicas: 1
     ports:

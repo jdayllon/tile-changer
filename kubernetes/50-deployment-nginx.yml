@@ -4,6 +4,7 @@ metadata:
   name: tile-changer-nginx-deployment
   labels:
     app: nginx-tile-changer
+  namespace: tile-changer
 spec:
   replicas: 1
   selector:

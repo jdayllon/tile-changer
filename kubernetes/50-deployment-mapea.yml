@@ -5,6 +5,7 @@ metadata:
   labels:
     app: mapea-tile-changer
     tier: backend
+  namespace: tile-changer
 spec:
   replicas: 1
   selector:

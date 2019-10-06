@@ -6,6 +6,7 @@ metadata:
     app: tile-changer
     tier: backend
     target: ign
+  namespace: tile-changer
 spec:
   replicas: 1
   selector:

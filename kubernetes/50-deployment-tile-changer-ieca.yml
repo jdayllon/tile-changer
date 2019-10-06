@@ -6,6 +6,7 @@ metadata:
     app: tile-changer-ieca
     tier: backend
     target: ieca
+  namespace: tile-changer
 spec:
   replicas: 1
   selector:

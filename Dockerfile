@@ -4,7 +4,7 @@ LABEL maintainer="Juan David Ayllón Burguillo <jdayllon@gmail.com>"
 
 RUN apk --no-cache add build-base jpeg-dev jpeg zlib-dev
 
-RUN pip install flask loguru pillow requests 
+RUN pip install flask loguru pillow requests Flask-Caching redis
 
 RUN apk del build-base libjpeg-turbo-dev jpeg-dev
 

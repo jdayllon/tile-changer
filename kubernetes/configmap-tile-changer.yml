@@ -1,8 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: cfm-tile-changer
-  namespace: default
-data:
-  TARGET_HOST_IECA: http://www.callejerodeandalucia.es/
-  TARGET_HOST_IGN: http://www.ign.es/wms-inspire/
