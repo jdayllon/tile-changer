@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: tile-changer
-        image: jdayllon/tile-changer:1.0.0
+        image: jdayllon/tile-changer:lastest
         ports:
           - containerPort: 80
         env:
@@ -32,3 +32,28 @@ spec:
             configMapKeyRef:
               name: cfm-tile-changer
               key: TARGET_HOST_IGN
+         - name: CACHE_TYPE
+           valueFrom:
+            configMapKeyRef:
+              name: cfm-tile-changer
+              key: CACHE_TYPE
+         - name: CACHE_REDIS_HOST
+           valueFrom:
+            configMapKeyRef:
+              name: cfm-tile-changer
+              key: CACHE_REDIS_HOST
+         - name: CACHE_REDIS_PORT
+           valueFrom:
+            configMapKeyRef:
+              name: cfm-tile-changer
+              key: CACHE_REDIS_PORT
+         - name: CACHE_REDIS_PASSWORD
+           valueFrom:
+            configMapKeyRef:
+              name: cfm-tile-changer
+              key: CACHE_REDIS_PASSWORD
+         - name: CACHE_REDIS_DB
+           valueFrom:
+            configMapKeyRef:
+              name: cfm-tile-changer
+              key: CACHE_REDIS_DB

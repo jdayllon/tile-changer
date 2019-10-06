@@ -49,7 +49,7 @@ def serve_pil_image(pil_img, mimetype):
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
-@cache.cached(timeout=24*60*60)
+@cache.cached(timeout=24*60*60, query_string=True)
 def proxy(path):
   current_process = uuid.uuid1()
 
