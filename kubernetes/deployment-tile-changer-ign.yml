@@ -25,12 +25,9 @@ spec:
         image: jdayllon/tile-changer:1.0.0
         ports:
           - containerPort: 80
-        #env:
-        #  - name: TARGET_HOST
-        #    value: http://www.callejerodeandalucia.es/
         env:
          - name: TARGET_HOST
            valueFrom:
             configMapKeyRef:
               name: cfm-tile-changer
-              key: TARGET_HOST_IGN        
+              key: TARGET_HOST_IGN

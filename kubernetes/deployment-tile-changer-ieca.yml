@@ -34,3 +34,18 @@ spec:
             configMapKeyRef:
               name: cfm-tile-changer
               key: TARGET_HOST_IECA
+#      # Included pod-reaper to clean pods when was evicted, completed, ...
+#      - image: target/pod-reaper:2.3.0
+#        name: pod-reaper-pod-status
+#        env:
+#          - name: POD_STATUSES
+#            value: Evicted
+#          - name: SCHEDULE
+#            value: "*/3 * * * *"
+#      - image: target/pod-reaper:2.3.0
+#        name: pod-reaper-container-status
+#        env:
+#          - name: CONTAINER_STATUSES
+#            value: "Completed,Error,ImagePullBackOff,ErrImagePull"
+#          - name: SCHEDULE
+#            value: "*/3 * * * *"              

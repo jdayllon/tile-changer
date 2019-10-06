@@ -58,7 +58,13 @@
 		<!-- Base cartografica IGN -->
 		<Layer queryable="1" hidden="0">
 			<Server service="OGC:WMS" version="1.1.1">
-				<OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://www.ign.es/wms-inspire/ign-base" />
+				<!-- <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" 
+					xlink:type="simple" 
+					xlink:href="http://www.ign.es/wms-inspire/ign-base" />
+				-->
+				<OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" 
+					xlink:type="simple" 
+					xlink:href="http://tile-changer/services-ign/wms-inspire/ign-base" />
 			</Server>
 			<Name>IGNBaseTodo</Name>
 			<Title>IGNBaseTodo</Title>
@@ -118,7 +124,7 @@
 				version="1.1.1">
 				<OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink"
 					xlink:type="simple"
-					xlink:href="http://tile-changer/servicios/base/gwc/service/wms?" />
+					xlink:href="http://tile-changer/services-ieca/base/gwc/service/wms?" />
 			</Server>
 			<Name>base</Name>
 			<Title>Base Cartografica</Title>

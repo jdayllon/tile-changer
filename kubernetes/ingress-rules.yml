@@ -2,9 +2,6 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: ingress-tile-changer
-  annotations:
-    # use the shared ingress-nginx
-    kubernetes.io/ingress.class: "nginx"
 spec:
   rules:
   - host: tile-changer
@@ -21,11 +18,3 @@ spec:
         backend:
           serviceName: svc-mapea-tile-changer
           servicePort: 8080
-  - host: tile-changer
-    http:
-      paths:
-      - path: /servicios/
-        backend:
-          serviceName: svc-tile-changer-ieca
-          # Nodeport specified on deployment-tile-changer.yml
-          servicePort: 80
