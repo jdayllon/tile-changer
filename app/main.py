@@ -1,4 +1,5 @@
-from flask import Flask, request, send_file
+from flask import Flask, Response, request, send_file
+from werkzeug.wsgi import FileWrapper
 from flask_caching import Cache
 import requests
 from loguru import logger
@@ -6,6 +7,7 @@ import os
 import PIL.Image
 from io import BytesIO
 import uuid 
+import logging
 
 #### 
 def env_var_load(name, default_value):
@@ -38,23 +40,32 @@ if CACHE_TYPE == 'redis':
 app = Flask(__name__)
 app.config.from_mapping(config)
 cache = Cache(app)
-#### 
+####
+# Partial disable Requests logging
+logging.getLogger("requests").setLevel(logging.WARNING)
 
 # Based on https://stackoverflow.com/a/10170635
+# https://www.pythonanywhere.com/forums/topic/13570/
 def serve_pil_image(pil_img, mimetype):
     img_io = BytesIO()
     pil_img.save(img_io, mimetype.split("/")[1].upper())
     img_io.seek(0)
-    return send_file(img_io, mimetype=mimetype)
+    # Original response from Github uses send_file method
+    # but I have problems with pickle and uwsgi, changed send_file
+    # for direct uwsgi filewraper and Response from Flask
+    # --> return send_file(img_io, mimetype=mimetype)
+    w = FileWrapper(img_io)
+    return Response(w, mimetype=mimetype, direct_passthrough=True)
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 @cache.cached(timeout=24*60*60, query_string=True)
 def proxy(path):
+  
   current_process = uuid.uuid1()
 
   if isinstance(request.query_string, str):
-    target_url = f"{TARGET_HOST}{path}?{request.query_string}"
+        target_url = f"{TARGET_HOST}{path}?{request.query_string}"
   else:
     target_url = f"{TARGET_HOST}{path}?{request.query_string.decode()}"
 
@@ -73,9 +84,9 @@ def proxy(path):
   image_stream = BytesIO(res.content)
   image = PIL.Image.open(image_stream)
   image_bw = image.convert('LA')
-  logger.info(f"|{current_process}| Image transformed, ready to response")
-  return serve_pil_image(image_bw, original_mimetype)
+  logger.info(f"|{current_process}| Image transformed, sending...")
 
+  return serve_pil_image(image_bw, original_mimetype)
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0', port=8080)

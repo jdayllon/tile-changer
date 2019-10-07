@@ -1,4 +1,5 @@
 FROM tiangolo/meinheld-gunicorn-flask:python3.7-alpine3.8
+#FROM tiangolo/uwsgi-nginx-flask:python3.6-alpine3.7
 
 LABEL maintainer="Juan David Ayllón Burguillo <jdayllon@gmail.com>"
 

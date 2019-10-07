@@ -9,6 +9,8 @@ services:
       - "8080:80"
     env_file:
     - .env
+    volumes:
+       - ./app/:/app/
   mapea:
     build: mapea
     image: jdayllon/mapea:5.0.1
@@ -16,3 +18,9 @@ services:
       replicas: 1
     ports:
       - "9080:8080"
+  redis-cluster:
+    image: redis:5.0.5-alpine
+    deploy:
+      replicas: 1
+    ports:
+      - "6379:6379"
