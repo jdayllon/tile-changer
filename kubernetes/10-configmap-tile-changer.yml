@@ -5,9 +5,9 @@ metadata:
   namespace: tile-changer
 data:
   TARGET_HOST_IECA: http://www.callejerodeandalucia.es/
-  TARGET_HOST_IGN: http://www.ign.es/wms-inspire/'
+  TARGET_HOST_IGN: http://www.ign.es/wms-inspire/
   CACHE_TYPE: redis
-  CACHE_REDIS_HOST: 'redis-cluster' 	#A Redis server host. Used only for RedisCache.
+  CACHE_REDIS_HOST: redis-cluster 	#A Redis server host. Used only for RedisCache.
   CACHE_REDIS_PORT: '6379'  #A Redis server port. Default is 6379. Used only for RedisCache.
   CACHE_REDIS_PASSWORD: '' # A Redis password for server. Used only for RedisCache and RedisSentinelCache.
   CACHE_REDIS_DB: '' #	A Redis db (zero-based number index). Default is 0. Used only for RedisCache and RedisSentinelCache.

@@ -16,12 +16,22 @@ spec:
           serviceName: svc-tile-changer-ieca
           # Nodeport specified on deployment-tile-changer-ieca.yml
           servicePort: 80
-        
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-tile-changer-apps-ign
+  namespace: tile-changer
+  annotations:
+  # This is done for changing app's base path url to need path on wms services
+   nginx.ingress.kubernetes.io/rewrite-target: /$1
+spec:
+  rules:         
   - host: tile-changer
     http:
       paths:
-      - path: /services-ign/(.*)
+      - path: /services-ign/wms-inspire/(.*)
         backend:
           serviceName: svc-tile-changer-ign
           # Nodeport specified on deployment-tile-changer-ign.yml
-          servicePort: 80          
+          servicePort: 80                       

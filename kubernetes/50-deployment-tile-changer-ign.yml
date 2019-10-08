@@ -8,7 +8,7 @@ metadata:
     target: ign
   namespace: tile-changer
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: tile-changer-ign
